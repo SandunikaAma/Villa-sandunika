@@ -8,38 +8,36 @@ import Map from './Map';
 import Footer from './Footer';
 import './App.css';
 
-
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
+  };
 
   return (
     <Router>
-      <nav className="main-nav">
+      {/* Navbar */}
+      <nav className='main-nav'>
         <div className="nav-container">
-          <div className="logo">🌴 VillaLife</div>
+          <div className="logo">Villa</div>
 
-          {/* Hamburger Icon */}
-          <div
-            className={`burger ${menuOpen ? 'open' : ''}`}
-            onClick={toggleMenu}
-          >
-            <div className="line1" />
-            <div className="line2" />
-            <div className="line3" />
+          <div className="burger" onClick={toggleMenu}>
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
           </div>
 
-          {/* Navigation Links */}
           <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
             <Link to="/About" onClick={() => setMenuOpen(false)}>About</Link>
             <Link to="/Services" onClick={() => setMenuOpen(false)}>Services</Link>
-            <Link to="/Contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+            <Link to="/Contact" onClick={() => setMenuOpen(false)}>Contact Us</Link>
           </div>
         </div>
       </nav>
 
+      {/* Route matching */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
@@ -49,7 +47,6 @@ function App() {
 
       <Map />
       <Footer />
-
     </Router>
   );
 }
