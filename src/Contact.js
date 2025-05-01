@@ -31,7 +31,7 @@ function Contact() {
     }
 
     try {
-      await axios.post('https://villa-sandunika-backend.up.railway.app', formData);
+      await axios.post('https://villa-sandunika-backend.vercel.app/', formData);
       alert('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
